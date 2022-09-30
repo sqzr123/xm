@@ -1,0 +1,325 @@
+// flex布局
+.flex {
+  .display-flex();
+}
+// flex布局换主轴方向
+.flex-d {
+  .display-flex();
+  .flex-direction(column);
+}
+// 换行
+.flex-w {
+  .display-flex();
+  .flex-wrap(wrap);
+}
+// 子元素分配剩余空间
+.flex1 {
+  .flex(1);
+}
+// flex布局主轴靠右
+.flex-hr {
+  .display-flex();
+  .justify-content(flex-end);
+}
+// flex布局主轴居中
+.flex-hc {
+  .display-flex();
+  .justify-content(center);
+}
+// flex布局主轴两边贴边
+.flex-hb {
+  .display-flex();
+  .justify-content(space-between);
+}
+// flex布局主轴around平均分布
+.flex-ha {
+  .display-flex();
+  .justify-content(space-around);
+}
+// flex布局主轴靠左侧轴居中
+.flex-vc {
+  .display-flex();
+  .align-items(center);
+}
+// flex布局主轴靠右侧轴居中
+.flex-hrvc {
+  .display-flex();
+  .justify-content(flex-end);
+  .align-items(center);
+}
+// flex布局单行全居中
+.flex-hcvc {
+  .display-flex();
+  .justify-content(center);
+  .align-items(center);
+}
+// flex布局主轴两侧贴边侧轴居中
+.flex-hbvc {
+  .display-flex();
+  .justify-content(space-between);
+  .align-items(center);
+}
+// 换方向单行主轴居中
+.flex-dhc {
+  .display-flex();
+  .flex-direction(column);
+  .justify-content(center);
+}
+// 换方向主轴起始,侧轴居中
+.flex-dvc {
+  .display-flex();
+  .flex-direction(column);
+  .align-items(center);
+  // ie flex换方向，侧轴居中flex子项文字溢出容器,解决子项设置 max-width:100%
+  & > * {
+    max-width: 100%;
+  }
+}
+// 换方向单行全居中
+.flex-dhcvc {
+  .display-flex();
+  .flex-direction(column);
+  .justify-content(center);
+  .align-items(center);
+}
+// ie换行的问题，当内容只一行时，align-content设置无用，取的是align-items
+// -ms-align-items兼容写法无效，骇客写法只支持center \0;stretch \0;
+// flex布局换行主轴居中
+.flex-whc {
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(center);
+}
+// flex布局换行主轴两边贴边
+.flex-whb {
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(space-between);
+}
+// flex布局换行主轴around平均分布
+.flex-wha {
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(space-around);
+}
+// flex布局换行，侧轴起始位置
+.flex-wvt {
+  .display-flex();
+  .flex-wrap(wrap);
+  .align-items(flex-start);
+  .align-content(flex-start);
+}
+// ie换行垂直居中，当内容只一行时，子盒高度会stretch拉伸到最大，与父盒高度一样，居中没用
+// align-items: center \0;可解决一行居中，但此时每行子盒都居中对齐，不是顶部对齐居中
+// 解决1.加align-items: center \0;子盒统一高度(统一高度后所有浏览器都可加)
+// 解决2.父盒套一层盒子包裹居中，父盒不给高度，不用垂直居中
+// flex布局换行侧轴居中，主轴默认，每行子盒顶部对齐
+.flex-wvc { // ie不建议用，除非确定多行
+  .display-flex();
+  .flex-wrap(wrap);
+  // align-items: center \0;
+  .align-content(center);
+}
+// flex布局换行侧轴居中，每行子盒居中对齐
+.flex-wvc1 {
+  .display-flex();
+  .flex-wrap(wrap);
+  .align-items(center);
+  .align-content(center);
+}
+// flex布局换行全居中，每行子盒顶部对齐
+.flex-whcvc {// ie不建议用，除非确定多行
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(center);
+  // align-items: center \0;
+  .align-content(center);
+}
+// flex布局换行全居中，每行子盒居中对齐
+.flex-whcvc1 {
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(center);
+  .align-items(center);
+  .align-content(center);
+}
+// 换行主轴贴边，侧轴居中，每行子盒顶部对齐
+.flex-whbvc {// ie不建议用，除非确定多行
+  .display-flex();
+  .justify-content(space-between);
+  .flex-wrap(wrap);
+  // align-items: center \0;
+  .align-content(center); 
+}
+// 换行主轴贴边，侧轴居中，每行子盒居中对齐
+.flex-whbvc1 {
+  .display-flex();
+  .justify-content(space-between);
+  .flex-wrap(wrap);
+  .align-items(center);
+  .align-content(center); 
+}
+// flex布局换行around平均分布，每行子盒顶部对齐
+.flex-whavc {// ie不建议用，除非确定多行
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(space-around);
+  // align-items: center \0;
+  .align-content(center);
+}
+// flex布局换行around平均分布，每行子盒居中对齐
+.flex-whavc1 {
+  .display-flex();
+  .flex-wrap(wrap);
+  .justify-content(space-around);
+  .align-items(center);
+  .align-content(center);
+}
+// flex布局兼容
+.display-flex() {
+  // display: box; /*（伸缩盒最老版本）*/
+  display: -moz-box; /* Firefox 19 */
+  display: -ms-flexbox; /* 混合版本语法: IE 10 */
+  display: -webkit-box; /* iOS 6-, Safari 3.1-6 */
+  display: -webkit-flex; /* Chrome */
+  display: flex; /*flex容器*/
+}
+// 主轴方向
+.flex-direction(@flex-direction: row) {
+  -moz-flex-direction: @flex-direction;
+  -ms-flex-direction: @flex-direction;
+  -o-flex-direction: @flex-direction;
+  -webkit-flex-direction: @flex-direction;
+  flex-direction: @flex-direction;
+}
+// 主轴对齐方式
+.justify-content(@justify-content: flex-start) {
+  -moz-justify-content: @justify-content;
+  -ms-justify-content: @justify-content;
+  -o-justify-content: @justify-content;
+  -webkit-justify-content: @justify-content;
+  justify-content: @justify-content;
+}
+// 侧轴的对其方式(单行)
+.align-items(@align-items: stretch) {
+  -moz-align-items: @align-items;
+  -ms-align-items: @align-items;
+  -o-align-items: @align-items;
+  -webkit-align-items: @align-items;
+  align-items: @align-items;
+}
+// flex纵向换行
+.flex-wrap(@flex-wrap: nowrap) {
+  -moz-flex-wrap: @flex-wrap;
+  -ms-flex-wrap: @flex-wrap;
+  -o-flex-wrap: @flex-wrap;
+  -webkit-flex-wrap: @flex-wrap;
+  flex-wrap: @flex-wrap;
+}
+// 多行侧轴对齐方式
+.align-content(@align-content:stretch) {
+  -moz-align-content: @align-content;
+  -ms-align-content: @align-content;
+  -o-align-content: @align-content;
+  -webkit-align-content: @align-content;
+  align-content: @align-content;
+}
+// 子元素分配主轴空间
+.flex(@flexValue: 1) {
+  -prefix-box-flex: @flexValue; /* old spec webkit, moz */
+  -moz-box-flex: @flexValue 1 0%; /* Firefox 19- */
+  -ms-flex: @flexValue 1 0%; /* IE 10 */
+  -webkit-box-flex: @flexValue; /* OLD - iOS 6-, Safari 3.1-6 */
+  -webkit-flex: @flexValue; /* Chrome */
+  flex: @flexValue; /* NEW,  Opera 12.1, Firefox 20+ */
+}
+// 子元素在侧轴的对齐方式
+.align-self(@align-self: auto) {
+  -moz-align-self: @align-self;
+  -ms-align-self: @align-self;
+  -o-align-self: @align-self;
+  -webkit-align-self: @align-self;
+  align-self: @align-self;
+}
+//flex布局固定像素值
+.flex-pixel-val(@flexPixel: 0) {
+  -moz-box-flex: 0 0 @flexPixel; /* Firefox 19- */
+  -ms-flex: 0 0 @flexPixel; /* IE 10 */
+  -webkit-flex: 0 0 @flexPixel; /* Chrome */
+  flex: 0 0 @flexPixel; /* NEW,  Opera 12.1, Firefox 20+ */
+}
+// 圆角值
+// .border-radius(@radiusValue) {
+//   -webkit-border-radius: @radiusValue;
+//   border-radius: @radiusValue;
+// }
+// .box-sizing-border-box {
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
+// .box-sizing-content-box {
+//   -webkit-box-sizing: content-box;
+//   box-sizing: content-box;
+// }
+// .bottom-line-custom(
+//   @edgTop: 0,
+//   @edgRight: 0,
+//   @edgBottom: 0,
+//   @edgLeft: 0
+// ) {
+//   position: relative;
+//   &::after {
+//     position: absolute;
+//     content: '';
+//     left: @edgLeft;
+//     right: @edgRight;
+//     bottom: @edgBottom;
+//     // margin-top: 1px;
+//     height: 1px;
+//     background-color: @lineColor;
+//     -webkit-transform: scaleY(0.5);
+//     transform: scaleY(0.5);
+//   }
+// }
+
+// .top-line-custom(@edgTop: 0, @edgRight: 0, @edgBottom: 0, @edgLeft: 0) {
+//   position: relative;
+//   &::before {
+//     position: absolute;
+//     content: '';
+//     left: @edgLeft;
+//     right: @edgRight;
+//     top: @edgTop;
+//     height: 1px;
+//     background-color: @lineColor;
+//     -webkit-transform: scaleY(0.5);
+//     transform: scaleY(0.5);
+//   }
+// }
+// //上右下左
+// .bottom-line-zero {
+//   @include bottom-line-custom(0, 0, 0, 0);
+// }
+// .bottom-line-default {
+//   @include bottom-line-custom(0, 15px, 0, 15px);
+// }
+// .top-line-zero {
+//   @include top-line-custom(0, 0, 0, 0);
+// }
+// .right-arrow-custom(@edgRight: 0px, @imgSize: 16px) {
+//   position: relative;
+//   & > .right-arrow {
+//     position: absolute;
+//     top: 50%;
+//     margin-top: -@imgSize / 2;
+//     right: @edgRight;
+//     background: url('../assets/arrow-right.png') no-repeat center;
+//     background-size: @imgSize;
+//     width: @imgSize;
+//     height: @imgSize;
+//     border: none;
+//   }
+// }
+// .right-arrow-default {
+//   @include right-arrow-custom(10px, 16px);
+// }
